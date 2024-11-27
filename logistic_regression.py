@@ -64,27 +64,5 @@ class LogisticRegression:
         y_pred_classe = [1 if i > threshold else 0 for i in y_pred]
 
         return y_pred_classe
-
-        
-if __name__ == '__main__':
-
-    from sklearn.model_selection import train_test_split
-    from sklearn import datasets
-    from sklearn.metrics import confusion_matrix
-    
-    dataset = datasets.load_breast_cancer()
-    X, y = dataset.data, dataset.target
-
-    X, y = dataset.data, dataset.target 
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state = 1234
-    )
-
-    regressor = LogisticRegression(nb_iter = 1000,
-                                   alpha = 0.0001)
-    
-    regressor.train(X_train, y_train)
-    predictions = regressor.predict(X_test)
-   
     # Compute metrics
     cm = confusion_matrix(y_test, predictions)
